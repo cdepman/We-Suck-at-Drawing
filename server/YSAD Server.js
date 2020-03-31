@@ -1,3 +1,4 @@
+var path = require('path');
 var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
@@ -18,9 +19,9 @@ console.log("[SERVER] Server Started on port 1234");
 
 //This is where we send the files to the client
 app.get('/', function(req, res){
-    res.sendFile(__dirname + "/client/index.html");
+    res.sendFile(path.join(__dirname,"../client/index.html"));
 });
-app.use('/client',express.static(__dirname + "/client"));
+app.use('/client',express.static(path.join(__dirname, '../client')));
 
 ///////////////////////////////////////////////////////////////////////////////////////////SERVER STUFF
 //This is an array of clients
